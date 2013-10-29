@@ -1,0 +1,6 @@
+<strong>Hello {{ user.fullname }}!</strong>
+<p>{{survey.emailcontent }}</p>
+<p>To complete our suvery click on this link:</p>
+<div>
+<a href="{{ path('survey_answer', {'id': survey.id, 'program_id': program.id, 'user_id': user.id}) }}" class="btn btn-primary">Fill the survey</a>
+</div>

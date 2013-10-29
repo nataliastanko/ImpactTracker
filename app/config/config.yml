@@ -57,6 +57,11 @@ doctrine:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
 
+parameters:
+    sendgrid:
+        username: %sendgrid_username%
+        password: %sendgrid_password%
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: %mailer_transport%
