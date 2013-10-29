@@ -126,6 +126,8 @@ class SurveyController extends Controller
     }
 
 
+
+
     /**
      * Sends the survey
      *
@@ -286,6 +288,26 @@ class SurveyController extends Controller
         }
 
         return $this->redirect($this->generateUrl('survey'));
+    }
+
+    /**
+     * Displays a survey
+     *
+     * @Route("/{id}/fill", name="survey_fill")
+     * @Method("GET")
+     * @Template()
+     */
+    public function fillAction($id){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $survey = $em->getRepository('ImpactSurveyBundle:Survey')->find($id);
+
+        if (!$survey) {
+            throw $this->createNotFoundException('Unable to find Survey entity.');
+        }
+
+        return array('survey' => $survey, 'program' => null);
     }
 
     /**

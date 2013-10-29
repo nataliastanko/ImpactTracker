@@ -3,8 +3,11 @@
 {% block body -%}
 <div class="page-header">
     <h1>User list</h1>
+    <ul class="nav nav-pills">
+        <li><a href="{{ path('user_new') }}">Add new user</a></li>
+    </ul>
 </div>
-<a href="{{ path('user_new') }}" class="btn btn-primary">Create a new entry</a>
+
     <table class="table">
         <thead>
             <tr>
@@ -12,7 +15,7 @@
                 <th>Email</th>
                 <th>Name</th>
                 <th>Lastname</th>
-                <th>Is_active</th>
+                <th>Active?</th>
                 <th>Actions</th>
             </tr>
         </thead>

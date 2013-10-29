@@ -49,7 +49,7 @@ class AnswerController extends Controller
 
         //passwd
 
-        return $this->redirect($this->generateUrl('user_show', array('id' => $entity->getId())));
+        //return $this->redirect($this->generateUrl('user_show', array('id' => $entity->getId())));
     }
 
 }
