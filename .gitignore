@@ -1,0 +1,10 @@
+.DS_Store
+/nbproject
+/vendor
+/composer.phar
+/app/cache
+/app/logs
+/web/bundles
+/web/css
+/web/js
+/app/config/parameters.yml
