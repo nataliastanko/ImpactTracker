@@ -59,8 +59,8 @@ doctrine:
 
 parameters:
     sendgrid:
-        # username: %sendgrid_username%
-        # password: %sendgrid_password%
+        username: %sendgrid_username%
+        password: %sendgrid_password%
         
 
 # Swiftmailer Configuration
