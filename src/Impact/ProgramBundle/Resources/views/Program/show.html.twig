@@ -1,11 +1,9 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}
+{% block body %}
 <div class="page-header">
     <h1>Program: {{ entity.title }}</h1>
 </div>
-
-
 
     <table class="table">
         <tbody>
@@ -32,7 +30,10 @@
         </tbody>
     </table>
 
-    <h3>Send survey to participants:</h3>
+    <h4>Send survey to participants:</h4>
+
+    {# one program, one survey from select, participant from that program #}
+
     <p>
         <a href="{{ path('survey_send', { 'program_id': entity.id, 'id': 1}) }}" class="btn btn-primary">Send survey to all participants</a>
     </p>
