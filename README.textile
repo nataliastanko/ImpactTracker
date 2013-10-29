@@ -1,0 +1,18 @@
+h1. Impact tracker for graduates
+
+Web application to keep in touch with alumni, re-engage them and track their work careers
+
+h4. Young Enterprise
+
+Many charities, like Young Enterprise, work with young people to develop their employability skills.
+There is an increasing need to demonstrated long-term impact, years after the young people have left programmes.
+
+h4. The Challenge
+
+How can we use technology to track young people once they leave our programmes, keep in touch with our alumni, re-engage them, and utilise this incredible network to demonstrate impact?
+
+_young enterprise_
+
+h4. Technologies
+
+Symfony2
