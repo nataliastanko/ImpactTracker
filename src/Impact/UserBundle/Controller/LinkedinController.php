@@ -25,10 +25,10 @@ class LinkedinController extends Controller
     public function requestPrivateAction() {
         
         //load up the importer class
-        $importer   = $this->get('linkedin.importer');
+        $importer   = $this->get('ccc_linkedin_importer.importer');
         
         //set a redirect for linkedin to bump the user back to after they approve your app
-        $importer->setRedirect($this->generateUrl('ccc_linkedin_importer_receivePrivate', array('submit'=>true), true));
+        $importer->setRedirect($this->generateUrl('impact_ccc_linkedin_importer_receivePrivate', array('submit'=>true), true));
         
         //nothing on this form except for a submit button to start the process
         $form       = $this->createForm(new LiForm\RequestPrivate());
@@ -87,6 +87,7 @@ class LinkedinController extends Controller
     /**
      * Example of how to request the user's public data.
      * First step is same as above, except that this form has a text field to input another user's public profile url
+     * @Route("/receive-private", name="impact_ccc_linkedin_importer_requestPublic")
      */
     public function requestPublicAction() {
         $importer   = $this->get('linkedin.importer');
@@ -112,6 +113,7 @@ class LinkedinController extends Controller
     
     /**
      * Receive another user's public data.
+     * @Route("/receive-private", name="impact_ccc_linkedin_importer_receivePublic")
      */
     public function receivePublicAction() {
         $importer   = $this->get('linkedin.importer');

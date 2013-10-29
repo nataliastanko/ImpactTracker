@@ -26,11 +26,11 @@
     </table>
 
         <ul class="record_actions">
-    <li>
-        <a class="btn btn-primary" href="{{ path('user_linkedin') }}">
+    {#<li>
+        <a class="btn" href="{{ path('user_linkedin') }}">
             Connect with LinkedIn
         </a>
-    </li>
+    </li>#}
     <li>
         <a href="{{ path('user_edit', { 'id': entity.id }) }}">
             Edit
@@ -45,6 +45,7 @@
 </ul>
 
 <hr>
+<h3>LinkedIn connection</h3>
 <form action="{{ path('impact_ccc_linkedin_importer_requestPrivate') }}" method="get" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
 </form>
