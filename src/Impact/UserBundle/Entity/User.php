@@ -69,6 +69,21 @@ class User
         $this->program_involved = new ArrayCollection();
     }
 
+    public function __toString() {
+        return $this->getFullname();
+    }
+
+    /**
+     * Get user's name and lastname
+     * @return string 'name lastname'
+     */
+    public function getFullname(){
+        return $this->name.' '.$this->lastname;
+    }
+
+    public function addProgramInvolved(\Impact\ProgramBundle\Entity\Program $program){
+        $this->program_involved[] = $program;
+    }
 
     /**
      * Get id

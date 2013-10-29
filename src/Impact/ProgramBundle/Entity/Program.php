@@ -32,7 +32,7 @@ class Program
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -61,6 +61,21 @@ class Program
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getParticipants(){
+        return $this->participants;
+    }
+    
+    public function setParticipants(ArrayCollection $participants) {
+        foreach($participants as $p){
+            $this->addParticipant($p);
+        }
+    }
+    
+    public function addParticipant(\Impact\UserBundle\Entity\User $u){
+        $u->addProgramInvolved($this); // synchronously updating inverse side
+        $this->participants[] = $u;
     }
 
     /**

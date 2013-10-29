@@ -192,9 +192,9 @@ class ProgramController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
             return $this->redirect($this->generateUrl('program_edit', array('id' => $id)));
         }
+
 
         return array(
             'entity'      => $entity,
