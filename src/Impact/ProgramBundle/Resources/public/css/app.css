@@ -7,4 +7,5 @@ form input, form textarea{
 	width: 400px;
 	margin: 5px 0 10px 0;
 	padding: 5px 10px;
+	display: block;
 }
