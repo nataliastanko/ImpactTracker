@@ -129,12 +129,16 @@ class SurveyController extends Controller
     /**
      * Sends the survey
      *
-     * @Route("/{id}/send/program/{program_id}", name="survey_send")
-     * @Method("GET")
+     * @Route("/send/program/{program_id}", name="survey_send")
+     * @Method("POST")
      * @Template()
      */
-    public function sendAction($id, $program_id)
+    public function sendAction($program_id, Request $request)
     {
+
+        // create sendgrid 
+        $id = $request->get('suvery_id');
+
         $em = $this->getDoctrine()->getManager();
         $survey = $em->getRepository('ImpactSurveyBundle:Survey')->find($id);
 
@@ -144,8 +148,6 @@ class SurveyController extends Controller
 
         $program = $em->getRepository('ImpactProgramBundle:Program')->find($program_id);
 
-        // create sendgrid 
-        
 
         // iterate throug users and send
         $sendgrid = new SendGrid($this->container->parameters['sendgrid_username'], $this->container->parameters['sendgrid_password']);
