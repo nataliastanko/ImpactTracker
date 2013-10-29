@@ -3,8 +3,52 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f1f0075690ed914993cebdf3f78a0827",
+    "hash": "4e9f5382babaafb842c421ac605d5ceb",
     "packages": [
+        {
+            "name": "ccc/linkedin-importer-bundle",
+            "version": "dev-master",
+            "target-dir": "CCC/LinkedinImporterBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cc-consulting/LinkedinImporterBundle.git",
+                "reference": "abd6bb0aee74f896c3792268950944ab08c5099c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cc-consulting/LinkedinImporterBundle/zipball/abd6bb0aee74f896c3792268950944ab08c5099c",
+                "reference": "abd6bb0aee74f896c3792268950944ab08c5099c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/symfony": "2.3.*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "CCC\\LinkedinImporterBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "J.R. Cook",
+                    "email": "james.cook@ccconsulting.jp"
+                }
+            ],
+            "description": "Linkedin profile data importer for symfony",
+            "homepage": "http://github.com/cc-consulting/LinkedinImporterBundle",
+            "keywords": [
+                "linkedin",
+                "profile",
+                "symfony"
+            ],
+            "time": "2013-10-28 16:15:10"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.1.2",
@@ -1777,7 +1821,8 @@
         "doctrine/doctrine-fixtures-bundle": 20,
         "doctrine/data-fixtures": 20,
         "doctrine/migrations": 20,
-        "doctrine/doctrine-migrations-bundle": 20
+        "doctrine/doctrine-migrations-bundle": 20,
+        "ccc/linkedin-importer-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

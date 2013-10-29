@@ -21,17 +21,14 @@
                 <th>Lastname</th>
                 <td>{{ entity.lastname }}</td>
             </tr>
-            <tr>
-                <th>Is_active</th>
-                <td>{{ entity.isactive }}</td>
-            </tr>
+            
         </tbody>
     </table>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('user') }}">
-            Back to the list
+        <a class="btn btn-primary" href="{{ path('user_linkedin') }}">
+            Connect with LinkedIn
         </a>
     </li>
     <li>
@@ -39,6 +36,19 @@
             Edit
         </a>
     </li>
+     <li>
+        <a href="{{ path('user') }}">
+            Back to the list
+        </a>
+    </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
+
+<hr>
+<form action="{{ path('impact_ccc_linkedin_importer_requestPrivate') }}" method="get" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+</form>
+
+<hr>
+
 {% endblock %}

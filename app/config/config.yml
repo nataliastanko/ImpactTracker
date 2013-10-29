@@ -59,8 +59,9 @@ doctrine:
 
 parameters:
     sendgrid:
-        username: %sendgrid_username%
-        password: %sendgrid_password%
+        # username: %sendgrid_username%
+        # password: %sendgrid_password%
+        
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -69,3 +70,11 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+ccc_linkedin_importer:
+    company: Cranberrycode
+    app_name: impact-tracker
+    api_key: i788ct4xtiz9
+    secret_key: CWPCldjXJ2mNd0zg
+    oauth_user_token: 93c8b746-6338-4f53-a146-2eaac8ec5c4a
+    oauth_user_secret: cd1cbfce-28b7-4f3a-ad17-1c62dacb41a5

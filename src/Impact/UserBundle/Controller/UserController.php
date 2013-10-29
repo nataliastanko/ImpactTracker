@@ -10,6 +10,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Impact\UserBundle\Entity\User;
 use Impact\UserBundle\Form\UserType;
 
+use Symfony\Component\Yaml\Parser;
+use Symfony\Component\Yaml\Exception\ParseException;
+use CCC\LinkedinImporterBundle\Form as LiForm;
+
 /**
  * User controller.
  *
@@ -34,6 +38,46 @@ class UserController extends Controller
         return array(
             'entities' => $entities,
         );
+    }
+
+    /**
+     * Lists all User entities.
+     *
+     * @Route("/linkedin", name="user_linkedin")
+     * @Method("GET")
+     * @Template()
+     */
+    public function linkedinAction()
+    {
+        $importer = $this->get('ccc_linkedin_importer.importer');
+        $importer->setRedirect($this
+            ->generateUrl('impact_ccc_linkedin_importer_receivePrivate', array('submit'=>true), true));
+        // $importer->setRedirect($this
+        //     ->generateUrl('ccc_linkedin_importer_receivePrivate', array('submit'=>true), true));
+
+        //nothing on this form except for a submit button to start the process
+        $form = $this->createForm(new LiForm\RequestPrivate());
+        $request = $this->getRequest();
+        
+        if($request->isMethod('POST')) {
+
+                $form->handleRequest($request);
+                
+                if($form->isValid()) {
+                        //user hit the start button, so request permission from the user to allow your app on their linkedin account
+                        //this will redirect to linkedin's site 
+                        return $importer->requestPermission();
+                }
+                
+        }
+
+        // $access_token = $importer->setCode($code_retrived_from_permission_request)->requestAccessToken();
+        // $profile_data = $importer->requestUserData('private', $access_token);
+
+        exit;
+        return $this->render('CCCLinkedinImporterBundle:Default:requestPrivate.html.twig', array('form' => $form->createView()));
+
+        return array();
     }
 
     /**
@@ -119,9 +163,37 @@ class UserController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
+
+
+
+
+        // //load up the importer class
+        // $importer   = $this->get('linkedin.importer');
+        
+        // //set a redirect for linkedin to bump the user back to after they approve your app
+        // $importer->setRedirect($this->generateUrl('ccc_linkedin_importer_receivePrivate', array('submit'=>true), true));
+        
+        //nothing on this form except for a submit button to start the process
+        $form       = $this->createForm(new LiForm\RequestPrivate());
+        $request    = $this->getRequest();
+        
+        // if($request->isMethod('POST')) {
+
+        //     $form->handleRequest($request);
+            
+        //     if($form->isValid()) {
+        //         //user hit the start button, so request permission from the user to allow your app on their linkedin account
+        //         //this will redirect to linkedin's site 
+        //         return $importer->requestPermission();
+        //     }
+            
+        // }
+
+
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'form' => $form->createView()
         );
     }
 
