@@ -33,10 +33,17 @@
     <h4>Send survey to participants:</h4>
 
     {# one program, one survey from select, participant from that program #}
-
-    <p>
-        <a href="{{ path('survey_send', { 'program_id': entity.id, 'id': 1}) }}" class="btn btn-primary">Send survey to all participants</a>
-    </p>
+    <form class="form-inline" action="{{ path('survey_send', { 'program_id': entity.id}) }}" method="post">
+        <div class="form-group">
+            <select name="suvery_id" class="form-control">
+                {% for survey in surveys %}
+                    <option value="{{survey.id}}">{{ survey.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <input type="submit" value="Send suvery" class="btn btn-primary" />
+        
+    </form>
 
     <hr />
 
