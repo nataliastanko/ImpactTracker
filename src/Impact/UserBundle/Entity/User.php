@@ -3,11 +3,12 @@
 namespace Impact\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
  *
- * @ORM\Table()
+ * @ORM\Table(name="users")
  * @ORM\Entity
  */
 class User
@@ -55,6 +56,18 @@ class User
      * @ORM\Column(name="is_active", type="boolean")
      */
     protected $is_active = false;
+
+    /** 
+     * @ORM\ManyToMany(targetEntity="Impact\ProgramBundle\Entity\Program", mappedBy="participants", cascade={"persist"})
+     */  
+    protected $program_involved;
+
+    /**
+     * Constructs a new instance of User
+     */
+    public function __construct() {
+        $this->program_involved = new ArrayCollection();
+    }
 
 
     /**

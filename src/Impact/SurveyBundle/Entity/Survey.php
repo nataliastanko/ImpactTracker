@@ -1,17 +1,17 @@
 <?php
 
-namespace Impact\ProgramBundle\Entity;
+namespace Impact\SurveyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Program
+ * Survey
  *
- * @ORM\Table(name="programs")
+ * @ORM\Table(name="surveys")
  * @ORM\Entity
  */
-class Program
+class Survey
 {
     /**
      * @var integer
@@ -32,25 +32,24 @@ class Program
     /**
      * @var string
      *
+     * @ORM\Column(name="email_content", type="text")
+     */
+    private $email_content;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Impact\UserBundle\Entity\User", inversedBy="program_involved", cascade={"persist"})
-     * @ORM\JoinTable(name="programs_users",
-     *      joinColumns={@ORM\JoinColumn(name="program_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")}
-     *      )
-     * @ORM\OrderBy({"name" = "ASC"})
+     * @ORM\OneToMany(targetEntity="Impact\SurveyBundle\Entity\Question", mappedBy="survey", cascade={"persist"})
      */
-    protected $participants;
+    protected $questions;
 
-    /**
-     * Constructs a new instance of Program
-     */
-    public function __construct() {
-        $this->participants = new ArrayCollection();
+    public function __construct(){
+        $this->questions = new ArrayCollection();
     }
 
     /**
@@ -67,7 +66,7 @@ class Program
      * Set title
      *
      * @param string $title
-     * @return Program
+     * @return Survey
      */
     public function setTitle($title)
     {
@@ -87,10 +86,33 @@ class Program
     }
 
     /**
+     * Set email_content
+     *
+     * @param string $emailContent
+     * @return Survey
+     */
+    public function setEmailContent($emailContent)
+    {
+        $this->email_content = $emailContent;
+    
+        return $this;
+    }
+
+    /**
+     * Get email_content
+     *
+     * @return string 
+     */
+    public function getEmailContent()
+    {
+        return $this->email_content;
+    }
+
+    /**
      * Set description
      *
      * @param string $description
-     * @return Program
+     * @return Survey
      */
     public function setDescription($description)
     {
