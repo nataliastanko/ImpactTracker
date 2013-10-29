@@ -51,6 +51,14 @@ class User
     private $password;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string salt
+     */
+    protected $salt;
+    
+
+    /**
      * @var boolean $is_active
      *
      * @ORM\Column(name="is_active", type="boolean")
@@ -71,6 +79,10 @@ class User
 
     public function __toString() {
         return $this->getFullname();
+    }
+
+    public function generatePassword() {
+        return substr(md5(time()+3), 0, 10);
     }
 
     /**
@@ -209,4 +221,13 @@ class User
     {
         return $this->is_active;
     }
+
+    public function getSalt(){
+        return $this->salt;
+    }
+ 
+    public function setSalt($value){
+        $this->salt = $value;
+    }
+
 }
