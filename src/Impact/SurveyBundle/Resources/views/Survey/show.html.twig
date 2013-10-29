@@ -1,9 +1,12 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Survey</h1>
 
-    <table class="record_properties">
+    <div class="page-header">
+        <h1>Survey: {{ entity.title }}</h1>
+        <a href="{{ path('survey_send', {'id': entity.id }) }}" class="btn btn-primary">Send survey</a>
+    </div>
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -24,17 +27,13 @@
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
         <a href="{{ path('survey') }}">
             Back to the list
         </a>
-    </li>
-    <li>
         <a href="{{ path('survey_edit', { 'id': entity.id }) }}">
             Edit
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
+    
+    {{ form(delete_form) }}
 </ul>
 {% endblock %}

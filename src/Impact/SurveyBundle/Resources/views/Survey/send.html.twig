@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+    <div class="page-header">
+        <h1>Survey sent!</h1>        
+    </div>
+    <p>Your survey  {{ entity.title }} has been sent!</p>        
+		<a href="{{ path('survey') }}">Back to the list</a>
+{% endblock %}

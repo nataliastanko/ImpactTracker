@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Impact\SurveyBundle\Entity\Survey;
 use Impact\SurveyBundle\Form\SurveyType;
+use SendGrid;
 
 /**
  * Survey controller.
@@ -123,6 +124,63 @@ class SurveyController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
+
+
+    /**
+     * Sends the survey
+     *
+     * @Route("/{id}/send/program/{program_id}", name="survey_send")
+     * @Method("GET")
+     * @Template()
+     */
+    public function sendAction($id, $program_id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $survey = $em->getRepository('ImpactSurveyBundle:Survey')->find($id);
+
+        if (!$survey) {
+            throw $this->createNotFoundException('Unable to find Survey entity.');
+        }
+
+        $program = $em->getRepository('ImpactProgramBundle:Program')->find($program_id);
+
+        // create sendgrid 
+        
+
+        // iterate throug users and send
+        $sendgrid = new SendGrid($this->container->parameters['sendgrid_username'], $this->container->parameters['sendgrid_password']);
+
+        
+        $templateFile = "ImpactSurveyBundle:Email:survey.html.twig";
+
+
+        foreach ($program->getParticipants() as $user) {
+            $mail = new SendGrid\Mail(); 
+            
+            $params = array(
+                'user' => $user, 
+                'program' => $program, 
+                'survey' => $survey
+            );
+
+            $body = $this->renderView($templateFile, $params);
+
+            // send test email
+            $mail->addTo($user->getEmail());
+            $mail->setFrom('impacttracker.com');
+            $mail->setSubject('Survey for '. $program->getTitle());
+            $mail->setHtml($body);
+
+            $sendgrid->web->send($mail);
+        }
+
+        
+
+        return array(
+            'entity'      => $survey,
+        );
+    }
+
 
     /**
      * Displays a form to edit an existing Survey entity.
