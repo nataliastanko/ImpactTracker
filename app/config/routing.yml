@@ -1,0 +1,10 @@
+impact_user:
+    resource: "@ImpactUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+impact_program:
+    resource: "@ImpactProgramBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

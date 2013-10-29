@@ -15,4 +15,4 @@ _young enterprise_
 
 h4. Technologies
 
-Symfony2
+Symfony 2.3.6
