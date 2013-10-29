@@ -2,14 +2,30 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Impact Tracker!{% endblock %}</title>
         {% block stylesheets %}
-             <link href="{{ asset('bundles/impactprogram/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('bundles/impactprogram/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('bundles/impactprogram/css/app.css') }}" rel="stylesheet" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block header %}
+            {{ include('partials/header.html.twig') }}
+        {% endblock %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+    
+            <footer>
+                <hr/>
+                <p>Impact Tracker - Developed @Hack4good, WebSummit, Dublin 2013</p>
+            </footer>
+        </div>
         {% block javascripts %}
             {# <script src="{{ asset('bundles/impactprogram/bootstrap/js/bootstrap.min.js') }}"></script> #}
         {% endblock %}

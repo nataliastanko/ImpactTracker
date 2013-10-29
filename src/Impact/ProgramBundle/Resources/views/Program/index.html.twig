@@ -1,9 +1,12 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Program list</h1>
+    <div class="page-header">    
+        <h1 class="">Program list</h1>
+    </div>
+    <a href="{{ path('program_new') }}" class="btn btn-primary">Create a new entry</a>
 
-    <table class="records_list">
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -33,11 +36,5 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('program_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+            
     {% endblock %}
