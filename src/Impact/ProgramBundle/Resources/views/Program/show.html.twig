@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>Program</h1>
 
-    <table class="record_properties">
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -16,6 +16,14 @@
             <tr>
                 <th>Description</th>
                 <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Participants</th>
+                <td>
+                    {% for p in entity.participants %}
+                        {{ p.fullname }}<br />
+                    {% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>
