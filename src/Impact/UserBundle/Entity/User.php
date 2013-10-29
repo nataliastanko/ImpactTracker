@@ -45,7 +45,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column(name="password", type="string", length=255, nullable=true)
      */
     private $password;
 
@@ -54,7 +54,7 @@ class User
      *
      * @ORM\Column(name="is_active", type="boolean")
      */
-    protected $is_active = true;
+    protected $is_active = false;
 
 
     /**
@@ -157,5 +157,28 @@ class User
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set is_active
+     *
+     * @param string $lastname
+     * @return User
+     */
+    public function setIsActive($var)
+    {
+        $this->is_active = $var;
+    
+        return $this;
+    }
+
+    /**
+     * Get is_active
+     *
+     * @return string 
+     */
+    public function getIsActive()
+    {
+        return $this->is_active;
     }
 }
