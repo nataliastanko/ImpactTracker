@@ -31,6 +31,8 @@ class AnswerController extends Controller
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
+        // @Todo, check if only once activated user!
+
         $passwd = $entity->generatePassword();
         $entity->setPassword($passwd);
 

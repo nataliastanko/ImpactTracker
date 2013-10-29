@@ -2,5 +2,5 @@
 <p>{{survey.emailcontent }}</p>
 <p>To complete our suvery click on this link:</p>
 <div>
-<a href="{{ path('survey_answer', {'id': survey.id, 'program_id': program.id, 'user_id': user.id}) }}" class="btn btn-primary">Fill the survey</a>
+<a href="{{ url('answer_survey', {'id': user.id, 'program': program.id, 'survey': survey.id }) }}" class="btn btn-primary">Fill the survey</a>
 </div>

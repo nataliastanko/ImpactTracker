@@ -110,16 +110,19 @@ class ProgramController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ImpactProgramBundle:Program')->find($id);
+        $entity = $em->getRepository('ImpactProgramBundle:Program')->find($id);    
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Program entity.');
         }
 
+        $surveys = $em->getRepository('ImpactSurveyBundle:Survey')->findAll();
+
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
             'entity'      => $entity,
+            'surveys'     => $surveys,
             'delete_form' => $deleteForm->createView(),
         );
     }
